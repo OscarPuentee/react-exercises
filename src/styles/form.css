@@ -1,0 +1,54 @@
+.d-none {
+	display: none;
+}
+
+.icon-add {
+	color: white;
+	background: lightseagreen;
+	padding: 0 0.2em;
+	border-radius: 5px;
+}
+
+h1 {
+	color: white;
+}
+
+#refrigerator {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#form-add:not(.d-none) {
+	color: black;
+	position: absolute;
+	background: white;
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#form-add label {
+	margin-top: 0.5rem;
+}
+
+#form-add .actions-wrapper {
+	margin-top: 0.5rem;
+	display: flex;
+	justify-content: space-around;
+}
+
+#modal-overlay:not(.d-none) {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	background: black;
+	opacity: 0.4;
+}
+
+table td {
+	padding: 0.5rem;
+}

@@ -1,9 +1,10 @@
-import Counter from './components/Counter';
+//import Counter from './components/Counter';
+import Refrigerator from './components/Refrigerator';
 
 function App() {
   return (
     <div className="App">
-      <Counter />
+      <Refrigerator />
     </div>
   );
 }
