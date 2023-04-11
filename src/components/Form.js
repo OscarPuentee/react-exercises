@@ -27,7 +27,7 @@ export default function Form({ingredient, handleChange, handleCancel, handleSubm
       </select>
       <div className="actions-wrapper">
         <button onClick={handleCancel}>Cancelar</button>
-        <button type="submit">Agregar</button>
+        <button type="submit">Guardar</button>
       </div>
     </form>
   );

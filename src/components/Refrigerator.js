@@ -4,13 +4,14 @@ import List from './List';
 import '../styles/form.css';
 
 export default function Refrigerator() {
-  
   const defaultIngredient = {
-    name: "test",
+    id: crypto.randomUUID(),
+    name: "",
     qty: 0,
     unit: "onzas",
     category: "carbohidratos"
   }
+
   const [showForm, setShowForm] = useState(false);
   const [ingredientsList, setIngredientsList] = useState([]);
   const [ingredient, setIngredient] = useState(defaultIngredient);
@@ -26,7 +27,20 @@ export default function Refrigerator() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIngredientsList([...ingredientsList, ingredient]);
+    
+    const isFound = ingredientsList.some(item => item.id === ingredient.id)
+    if (!isFound) {
+      setIngredientsList([...ingredientsList, ingredient]);
+    } else {
+      const newList = ingredientsList.map((item) => {
+        if (item.id === ingredient.id) {
+          return ingredient;
+        } else {
+          return item;
+        }
+      });
+      setIngredientsList(newList);
+    }
     toggleForm();
   }
 
@@ -36,6 +50,7 @@ export default function Refrigerator() {
 
   const editIngredient = (item) => {
     toggleForm();
+    setIngredient(item);
   }
 
   return (
@@ -43,10 +58,10 @@ export default function Refrigerator() {
       <h1>Mi Refrigerador <span className="icon-add" onClick={toggleForm}>+</span></h1>
       <div id="modal-overlay" className={!showForm ? 'd-none' : ''} onClick={toggleForm}></div>
       { showForm &&
-        <Form ingredient={defaultIngredient} handleChange={handleChange} handleCancel={toggleForm} handleSubmit={handleSubmit}/>
+        <Form ingredient={ingredient} handleChange={handleChange} handleCancel={toggleForm} handleSubmit={handleSubmit}/>
       }
       { ingredientsList.length > 0 &&
-        <List items={ingredientsList} action={editIngredient}/>
+        <List items={ingredientsList} editIngredient={editIngredient}/>
       }
     </div>
   );
